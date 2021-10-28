@@ -1,0 +1,12 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: storage-configmap
+  namespace: default
+data:
+  IMAGE_PROMOTION_STORAGE_TAG: "127.0.0.1:30400/promotion-storage:latest"
+  IMAGE_PROMOTION_MATCHING_TAG: "127.0.0.1:30400/promotion-matching:latest"
+  IMAGE_PROMOTION_USER_TAG: "127.0.0.1:30400/promotion-user:latest"
+  IMAGE_PROMOTION_UI_TAG: "127.0.0.1:30400/promotion-ui:latest"
+  PROMOTION_STORAGE_URL: "http://35.247.133.21:31001/promotion-storage/promotions"
+  PROMOTION_MATCHING_URL: "http://35.247.133.21:31002/promotion-matching/"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} %-5p [%X{userId}] [%t] [%c:%L] - %msg%n" />
+		</Console>
+		<RollingFile name="LogToRollingFile"
+			fileName="logs/promotion-storage.log"
+			filePattern="logs/$${date:yyyy-MM}/promotion-storage-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %-5p [%X{userId}] [%t] [%c:%L] - %m%n</Pattern>
+			</PatternLayout>
+
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.github" level="INFO"
+			additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="LogToRollingFile" />
+		</Logger>
+		<Root level="ERROR">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>
